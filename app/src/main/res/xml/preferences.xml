@@ -929,6 +929,23 @@
 
             </PreferenceCategory>
 
+            <PreferenceCategory
+                android:key="preferences_open_registry"
+                android:title="Register Rights Settings"
+                >
+
+                <EditTextPreference
+                    android:key="preference_open_registry_url"
+                    android:title="Endpoint URL"
+                    android:summary="Server endpoint URL for registering copyrights"
+                    android:dialogTitle="Endpoint URL"
+                    android:dialogMessage="Server endpoint URL for registering copyrights"
+                    android:inputType="text"
+                    android:defaultValue="https://validator.orbs.com"
+                    />
+
+            </PreferenceCategory>
+
             <!--  if we move this to another PreferenceGroup, we should update code to remove this Preference -->
             <PreferenceCategory
                 android:key="preference_category_photo_debugging"

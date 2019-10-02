@@ -77,6 +77,7 @@ public class MyApplicationInterface extends BasicApplicationInterface {
     private final StorageUtils storageUtils;
     private final DrawPreview drawPreview;
     private final ImageSaver imageSaver;
+    private final OpenRights openRights;
 
     private final static float panorama_pics_per_screen = 3.33333f;
     private int n_capture_images = 0; // how many calls to onPictureTaken() since the last call to onCaptureStarted()
@@ -160,6 +161,8 @@ public class MyApplicationInterface extends BasicApplicationInterface {
 
         this.imageSaver = new ImageSaver(main_activity);
         this.imageSaver.start();
+
+        this.openRights = new OpenRights(getOpenRightsUrlPref());
 
         this.reset();
         if( savedInstanceState != null ) {
@@ -1137,6 +1140,10 @@ public class MyApplicationInterface extends BasicApplicationInterface {
         if( MyDebug.LOG )
             Log.d(TAG, "getZoomPref: " + zoom_factor);
         return zoom_factor;
+    }
+
+    private String getOpenRightsUrlPref() {
+        return sharedPreferences.getString("preference_open_registry_url", "");
     }
 
     @Override
@@ -2961,6 +2968,8 @@ public class MyApplicationInterface extends BasicApplicationInterface {
 
         if( MyDebug.LOG )
             Log.d(TAG, "onPictureTaken complete, success: " + success);
+
+        this.openRights.register(data, current_date);
 
         return success;
     }
