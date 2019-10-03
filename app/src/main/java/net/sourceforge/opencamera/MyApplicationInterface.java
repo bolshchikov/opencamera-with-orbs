@@ -162,7 +162,7 @@ public class MyApplicationInterface extends BasicApplicationInterface {
         this.imageSaver = new ImageSaver(main_activity);
         this.imageSaver.start();
 
-        this.openRights = new OpenRights(getOpenRightsUrlPref());
+        this.openRights = new OpenRights(getContext());
 
         this.reset();
         if( savedInstanceState != null ) {
@@ -2969,7 +2969,9 @@ public class MyApplicationInterface extends BasicApplicationInterface {
         if( MyDebug.LOG )
             Log.d(TAG, "onPictureTaken complete, success: " + success);
 
-        this.openRights.register(data, current_date);
+        if (getOpenRightsUrlPref() != "") {
+            this.openRights.register(getOpenRightsUrlPref(), data, current_date);
+        }
 
         return success;
     }

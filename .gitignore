@@ -21,3 +21,5 @@ testdata/
 
 local.properties
 uninstall.bat
+
+node_modules
