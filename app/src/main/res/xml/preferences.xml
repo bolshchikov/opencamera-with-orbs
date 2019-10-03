@@ -939,9 +939,9 @@
                     android:title="Endpoint URL"
                     android:summary="Server endpoint URL for registering copyrights"
                     android:dialogTitle="Endpoint URL"
-                    android:dialogMessage="Server endpoint URL for registering copyrights"
+                    android:dialogMessage="Server endpoint URL for registering copyrights. E.g. https://"
                     android:inputType="text"
-                    android:defaultValue="https://validator.orbs.com"
+                    android:defaultValue="https://open-camera-registry.herokuapp.com"
                     />
 
             </PreferenceCategory>
