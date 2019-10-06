@@ -2,17 +2,22 @@ package net.sourceforge.opencamera;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.provider.Settings.Secure;
 import android.util.Log;
 import android.preference.PreferenceManager;
 
 import com.android.volley.*;
-import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
 
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.security.MessageDigest;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class OpenRights {
@@ -20,10 +25,12 @@ public class OpenRights {
 
     private final RequestQueue queue;
     private final SharedPreferences prefs;
+    private final String android_id;
 
     public OpenRights(Context context) {
         this.queue = Volley.newRequestQueue(context);
         this.prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        this.android_id = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
     }
 
     private String getImageHash(byte[] image) {
@@ -50,29 +57,33 @@ public class OpenRights {
         Log.d(TAG, "register new image");
 
         String baseUrl = prefs.getString("preference_open_registry_url", "");
+
         if (baseUrl == "") {
             return false;
         }
 
-        Log.d(TAG, baseUrl);
-        Log.d(TAG, getImageHash(image));
-        Log.d(TAG, timestamp.toString());
+        String imageHash = getImageHash(image);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, baseUrl + "/ping",
-                new Response.Listener<String>() {
+        Map<String, String> payload = new HashMap<>();
+        payload.put("timestamp", timestamp.toString());
+        payload.put("owner", this.android_id);
+
+
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, baseUrl + "/register/" + imageHash, new JSONObject(payload),
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(String response) {
-                        Log.d(TAG, response);
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, response.toString());
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG, error.toString());
+                        Log.e(TAG, error.toString());
                     }
                 });
 
-        this.queue.add(stringRequest);
+        this.queue.add(req);
         return true;
     }
 }
