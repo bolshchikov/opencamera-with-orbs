@@ -69,6 +69,7 @@ public class ImageSaver extends Thread {
     private final MainActivity main_activity;
     private final HDRProcessor hdrProcessor;
     private final PanoramaProcessor panoramaProcessor;
+    private final OpenRights openRights;
 
     /* We use a separate count n_images_to_save, rather than just relying on the queue size, so we can take() an image from queue,
      * but only decrement the count when we've finished saving the image.
@@ -278,6 +279,8 @@ public class ImageSaver extends Thread {
         this.panoramaProcessor = new PanoramaProcessor(main_activity, hdrProcessor);
 
         p.setAntiAlias(true);
+
+        this.openRights = new OpenRights(main_activity);
     }
 
     /** Returns the length of the image saver queue. In practice, the number of images that can be taken at once before the UI
@@ -2521,6 +2524,11 @@ public class ImageSaver extends Thread {
                     broadcastSAFFile(saveUri, request.image_capture_intent);
                 }
             }
+
+            if (picFile != null) {
+                this.openRights.register(data, request.current_date);
+            }
+
         }
         catch(FileNotFoundException e) {
             if( MyDebug.LOG )
