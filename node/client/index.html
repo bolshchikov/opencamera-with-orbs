@@ -10,8 +10,8 @@
     <h2>Welcome to Open Camera Registry Demo</h2>
     <article>Upload the image to calculate to check whether it's registered on the blockchain</article>
     <br>
-    <form method="POST" action="/check" name="document"> 
-        <input type="file" />
+    <form method="POST" action="/check" encType="multipart/form-data"> 
+        <input type="file" name="image" />
         <br>
         <input type="submit" />
     </form>
