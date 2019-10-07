@@ -12,15 +12,20 @@
             padding: 0.5rem;
             margin-top: 1rem;
         }
+        pre {
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
     </style>
 </head>
 
 <body>
-    <h2>Welcome to Open Camera Registry Demo</h2>
+    <%- include('header'); -%>
+    <h4>File details:</h4>
     <section class="info">
-        <h4>File details:</h4>
-        <pre>Hash: <%= hash %></pre>
-        <pre>Timestamp: <%= timestamp %></pre>
+        <pre><b>Name</b>: <%= fileName %></pre>
+        <pre><b>Hash</b>: <%= hash %></pre>
+        <pre><b>Timestamp</b>: <%= timestamp %></pre>
     </section>
 </body>
 

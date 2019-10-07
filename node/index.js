@@ -16,17 +16,22 @@ app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(express.static('client'));
 
-app.post('/api/register/:mediaId', async (req, res) => {
-  console.log(req.params.mediaId);
-  console.log(req.body);
-  res.send({ result: 'ok' });
+app.get('/', (req, res) => {
+  res.render('index');
 });
 
 app.post('/check', async (req, res) => {
   res.render('check', {
+    fileName: req.files.image.name,
     hash: sha256(req.files.image.data),
     timestamp: Date.now(),
   });
+});
+
+app.post('/api/register/:mediaId', async (req, res) => {
+  console.log(req.params.mediaId);
+  console.log(req.body);
+  res.send({ result: 'ok' });
 });
 
 app.get('/ping', async (_, res) => res.send('pong'));
