@@ -35,7 +35,7 @@ public class OpenRights {
 
     private String getImageHash(byte[] image) {
         try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] messageDigest = md.digest(image);
             BigInteger no = new BigInteger(1, messageDigest);
             String hashtext = no.toString(16);
@@ -63,6 +63,7 @@ public class OpenRights {
         }
 
         String imageHash = getImageHash(image);
+        Log.d(TAG, imageHash);
 
         Map<String, String> payload = new HashMap<>();
         payload.put("timestamp", timestamp.toString());
