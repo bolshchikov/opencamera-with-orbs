@@ -16,6 +16,9 @@
             white-space: pre-wrap;
             word-break: break-all;
         }
+        .error {
+            color: red
+        }
     </style>
 </head>
 
@@ -25,7 +28,12 @@
     <section class="info">
         <pre><b>Name</b>: <%= fileName %></pre>
         <pre><b>Hash</b>: <%= hash %></pre>
+        <%if (isRegistered) { %>
         <pre><b>Timestamp</b>: <%= timestamp %></pre>
+        <pre><b>Owner</b>: <%= owner %></pre>
+        <% } else { %>
+        <pre class="error">Image is not registered</pre>
+        <% } %>
     </section>
 </body>
 
