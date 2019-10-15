@@ -70,7 +70,7 @@ public class OpenRights {
         payload.put("owner", this.android_id);
 
 
-        JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, baseUrl + "/register/" + imageHash, new JSONObject(payload),
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, baseUrl + "/api/register/" + imageHash, new JSONObject(payload),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
