@@ -1,0 +1,16 @@
+{
+    "Environments": {
+      "local": {
+        "VirtualChain": 42,
+        "Endpoints": ["http://localhost:8080"]
+      },
+      "demonet": {
+        "VirtualChain": 1000,
+        "Endpoints": ["http://node2.demonet.orbs.com/vchains/1000/"]
+      },
+      "mainnet": {
+        "VirtualChain": 1960000,
+        "Endpoints": ["http://validator.orbs.com/vchains/1960000"]
+      }
+    }
+  }
