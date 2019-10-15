@@ -33,6 +33,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.TwoStatePreference;
+import android.provider.Settings;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -983,6 +984,8 @@ public class MyPreferenceFragment extends PreferenceFragment implements OnShared
                         about_string.append(Build.HARDWARE);
                         about_string.append("\nDevice variant: ");
                         about_string.append(Build.DEVICE);
+                        about_string.append("\nAndroid ID: ");
+                        about_string.append(Settings.Secure.getString(MyPreferenceFragment.this.getActivity().getContentResolver(), Settings.Secure.ANDROID_ID));
                         about_string.append("\nLanguage: ");
                         about_string.append(Locale.getDefault().getLanguage());
                         {
