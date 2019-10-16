@@ -8,6 +8,10 @@
         "VirtualChain": 1000,
         "Endpoints": ["http://node2.demonet.orbs.com/vchains/1000/"]
       },
+      "demonet2": {
+        "VirtualChain": 1003,
+        "Endpoints": ["http://node1.demonet.orbs.com/vchains/1003"]
+      },
       "mainnet": {
         "VirtualChain": 1960000,
         "Endpoints": ["http://validator.orbs.com/vchains/1960000"]
