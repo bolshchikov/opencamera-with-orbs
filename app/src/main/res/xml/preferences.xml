@@ -1221,6 +1221,13 @@
         >
 
         <Preference
+            android:key="preference_about_orbs"
+            android:title="@string/preference_about_orbs"
+            android:summary="@string/preference_about_orbs_summary"
+            android:icon="@drawable/ic_orbs_outline_white_48dp"
+            />
+
+        <Preference
             android:key="preference_online_help"  
             android:title="@string/preference_online_help"
             android:summary="@string/preference_online_help_summary"
@@ -1239,8 +1246,8 @@
             android:title="@string/preference_use_camera2"
             android:summary="@string/preference_use_camera2_summary"
             android:defaultValue="false"
-            />  
-        
+            />
+
         <Preference
             android:key="preference_about"  
             android:title="@string/preference_about"

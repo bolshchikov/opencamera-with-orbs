@@ -940,6 +940,97 @@ public class MyPreferenceFragment extends PreferenceFragment implements OnShared
         }
 
         {
+            final Preference pref = findPreference("preference_about_orbs");
+            pref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference arg0) {
+                    if( pref.getKey().equals("preference_about_orbs") ) {
+                        if( MyDebug.LOG )
+                            Log.d(TAG, "user clicked about orbs");
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MyPreferenceFragment.this.getActivity());
+                        alertDialog.setTitle(R.string.preference_about_orbs);
+                        final StringBuilder about_string = new StringBuilder();
+                        final String orbs_web_link = "Orbs";
+                        final String orbs_demo_link = "Orbs demo website";
+                        final String vchain_explorer_link = "Block Explorer";
+                        final String verification_link = "HERE";
+                        String version = "UNKNOWN_VERSION";
+                        int version_code = -1;
+                        try {
+                            PackageInfo pInfo = MyPreferenceFragment.this.getActivity().getPackageManager().getPackageInfo(MyPreferenceFragment.this.getActivity().getPackageName(), 0);
+                            version = pInfo.versionName;
+                            version_code = pInfo.versionCode;
+                        }
+                        catch(NameNotFoundException e) {
+                            if( MyDebug.LOG )
+                                Log.d(TAG, "NameNotFoundException exception trying to get version number");
+                            e.printStackTrace();
+                        }
+                        about_string.append("Open Rights Camera v");
+                        about_string.append(version);
+                        //about_string.append("\nby Orbs ltd.");
+                        about_string.append("\n\n" + orbs_web_link + " is a Public blockchain infrastructure for enterprise grade apps.");
+                        about_string.append("\n\nFor more demos, please visit  ");
+                        about_string.append(orbs_demo_link);
+                        about_string.append("\n\nAll uploaded hash data are notarized on blockchain and you can see them in " + vchain_explorer_link + ", and can be read the data " + verification_link);
+                        about_string.append("\n\nAndroid ID (Unique ID): ");
+                        about_string.append(Settings.Secure.getString(MyPreferenceFragment.this.getActivity().getContentResolver(), Settings.Secure.ANDROID_ID));
+                        about_string.append("\n\nLanguage: ");
+                        about_string.append(Locale.getDefault().getLanguage());
+
+                        SpannableString span = new SpannableString(about_string);
+                        // Google Play prelaunch accessibility warnings suggest using URLSpan instead of ClickableSpan
+                        span.setSpan(new URLSpan("https://www.orbs.com/"), about_string.indexOf(orbs_web_link), about_string.indexOf(orbs_web_link) + orbs_web_link.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+                        span.setSpan(new URLSpan("https://www.demos.orbs.network/"), about_string.indexOf(orbs_demo_link), about_string.indexOf(orbs_demo_link) + orbs_demo_link.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+                        span.setSpan(new URLSpan("https://orbs-prism-demonet.herokuapp.com/vchains/1003"), about_string.indexOf(vchain_explorer_link), about_string.indexOf(vchain_explorer_link) + vchain_explorer_link.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+                        span.setSpan(new URLSpan("https://open-camera-registry.herokuapp.com/"), about_string.indexOf(verification_link), about_string.indexOf(verification_link) + verification_link.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+
+                        // clickable text is only supported if we call setMovementMethod on the TextView - which means we need to create
+                        // our own for the AlertDialog!
+                        final float scale = getActivity().getResources().getDisplayMetrics().density;
+                        TextView textView = new TextView(getActivity());
+                        textView.setText(span);
+                        textView.setMovementMethod(LinkMovementMethod.getInstance());
+                        textView.setTextAppearance(getActivity(), android.R.style.TextAppearance_Medium);
+                        ScrollView scrollView = new ScrollView(getActivity());
+                        scrollView.addView(textView);
+                        // padding values from /sdk/platforms/android-18/data/res/layout/alert_dialog.xml
+                        textView.setPadding((int)(5*scale+0.5f), (int)(5*scale+0.5f), (int)(5*scale+0.5f), (int)(5*scale+0.5f));
+                        scrollView.setPadding((int)(14*scale+0.5f), (int)(2*scale+0.5f), (int)(10*scale+0.5f), (int)(12*scale+0.5f));
+                        alertDialog.setView(scrollView);
+                        //alertDialog.setMessage(about_string);
+
+                        alertDialog.setPositiveButton(android.R.string.ok, null);
+                        alertDialog.setNegativeButton(R.string.about_copy_to_clipboard, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if( MyDebug.LOG )
+                                    Log.d(TAG, "user clicked copy to clipboard");
+                                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Activity.CLIPBOARD_SERVICE);
+                                ClipData clip = ClipData.newPlainText("OpenCamera About", about_string);
+                                clipboard.setPrimaryClip(clip);
+                            }
+                        });
+                        final AlertDialog alert = alertDialog.create();
+                        // AlertDialog.Builder.setOnDismissListener() requires API level 17, so do it this way instead
+                        alert.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                            @Override
+                            public void onDismiss(DialogInterface arg0) {
+                                if( MyDebug.LOG )
+                                    Log.d(TAG, "about dialog dismissed");
+                                dialogs.remove(alert);
+                            }
+                        });
+                        alert.show();
+                        dialogs.add(alert);
+                        return false;
+                    }
+                    return false;
+                }
+            });
+        }
+
+
+        {
             final Preference pref = findPreference("preference_about");
             pref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
                 @Override
