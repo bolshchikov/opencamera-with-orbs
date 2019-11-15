@@ -907,4 +907,6 @@
 
         </ul>
     </string>
+
+    <string name="photo_hash_registred_successfully">Photo Rights registered successfully</string>
 </resources>

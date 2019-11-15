@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.provider.Settings.Secure;
 import android.util.Log;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 import com.android.volley.*;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -26,8 +27,10 @@ public class OpenRights {
     private final RequestQueue queue;
     private final SharedPreferences prefs;
     private final String android_id;
+    private Context mContext;
 
     public OpenRights(Context context) {
+        mContext = context;
         this.queue = Volley.newRequestQueue(context);
         this.prefs = PreferenceManager.getDefaultSharedPreferences(context);
         this.android_id = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
@@ -75,6 +78,7 @@ public class OpenRights {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d(TAG, response.toString());
+                        android.widget.Toast.makeText(mContext, R.string.photo_hash_registred_successfully, Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
