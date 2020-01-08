@@ -17,7 +17,7 @@
 <body>
     <%- include('header'); -%>  
     <article>Upload the image to calculate to verify whether it's registered on the blockchain.</article>
-    <p>To see transactions live, please go to <a href="https://orbs-prism-demonet.herokuapp.com" target="_blank">Orbs Block Explorer</a>.</p>
+    <p>To see transactions live, please go to <a href="<%= PRISM_URL %>" target="_blank">Orbs Block Explorer</a>.</p>
     <br>
     <form method="POST" action="/check" encType="multipart/form-data"> 
         <input type="file" name="image" />

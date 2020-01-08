@@ -1,3 +1,4 @@
+require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -18,7 +19,9 @@ app.use(bodyParser.json());
 app.use(express.static('client'));
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', {
+    PRISM_URL: process.env.PRISM_URL
+  });
 });
 
 app.post('/check', async (req, res) => {
