@@ -6,9 +6,9 @@
         android:shortcutShortLabel="@string/action_settings"
         >
         <intent
-            android:action="net.sourceforge.openregistrycamera.SHORTCUT_SETTINGS"
-            android:targetPackage="net.sourceforge.openregistrycamera"
-            android:targetClass="net.sourceforge.openregistrycamera.MainActivity"
+            android:action="com.orbs.openregistrycamera.SHORTCUT_SETTINGS"
+            android:targetPackage="com.orbs.openregistrycamera"
+            android:targetClass="com.orbs.openregistrycamera.MainActivity"
         />
     </shortcut>
     <shortcut
@@ -18,9 +18,9 @@
         android:shortcutShortLabel="@string/gallery"
         >
         <intent
-            android:action="net.sourceforge.openregistrycamera.SHORTCUT_GALLERY"
-            android:targetPackage="net.sourceforge.openregistrycamera"
-            android:targetClass="net.sourceforge.openregistrycamera.MainActivity"
+            android:action="com.orbs.openregistrycamera.SHORTCUT_GALLERY"
+            android:targetPackage="com.orbs.openregistrycamera"
+            android:targetClass="com.orbs.openregistrycamera.MainActivity"
         />
     </shortcut>
     <shortcut
@@ -30,9 +30,9 @@
         android:shortcutShortLabel="@string/record_video"
         >
         <intent
-            android:action="net.sourceforge.openregistrycamera.SHORTCUT_VIDEO"
-            android:targetPackage="net.sourceforge.openregistrycamera"
-            android:targetClass="net.sourceforge.openregistrycamera.MainActivity"
+            android:action="com.orbs.openregistrycamera.SHORTCUT_VIDEO"
+            android:targetPackage="com.orbs.openregistrycamera"
+            android:targetClass="com.orbs.openregistrycamera.MainActivity"
         />
     </shortcut>
     <shortcut
@@ -42,9 +42,9 @@
         android:shortcutShortLabel="@string/selfie"
         >
         <intent
-            android:action="net.sourceforge.openregistrycamera.SHORTCUT_SELFIE"
-            android:targetPackage="net.sourceforge.openregistrycamera"
-            android:targetClass="net.sourceforge.openregistrycamera.MainActivity"
+            android:action="com.orbs.openregistrycamera.SHORTCUT_SELFIE"
+            android:targetPackage="com.orbs.openregistrycamera"
+            android:targetClass="com.orbs.openregistrycamera.MainActivity"
         />
     </shortcut>
     <shortcut
@@ -54,9 +54,9 @@
         android:shortcutShortLabel="@string/camera"
         >
         <intent
-            android:action="net.sourceforge.openregistrycamera.SHORTCUT_CAMERA"
-            android:targetPackage="net.sourceforge.openregistrycamera"
-            android:targetClass="net.sourceforge.openregistrycamera.MainActivity"
+            android:action="com.orbs.openregistrycamera.SHORTCUT_CAMERA"
+            android:targetPackage="com.orbs.openregistrycamera"
+            android:targetClass="com.orbs.openregistrycamera.MainActivity"
         />
     </shortcut>
 </shortcuts>

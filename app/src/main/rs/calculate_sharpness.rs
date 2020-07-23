@@ -1,5 +1,5 @@
 #pragma version(1)
-#pragma rs java_package_name(net.sourceforge.openregistrycamera)
+#pragma rs java_package_name(com.orbs.openregistrycamera)
 #pragma rs_fp_relaxed
 
 rs_allocation bitmap;

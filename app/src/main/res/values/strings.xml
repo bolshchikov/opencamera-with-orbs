@@ -4,7 +4,7 @@
     <string name="app_name">Open Camera</string> <!-- shouldn't be translated -->
     <string name="action_settings">Settings</string>
     <string name="action_popup">Popup settings</string>
-    <string name="intro_text">Touch to focus, and press the blue camera button to take photos. For more help, click Online help from Settings. Open Camera is completely free. If you like this app, please consider buying my donate app :) (see link in Settings, or Online help).</string>
+    <string name="intro_text">This app may send Android ID, timestamp, and hash of photo(NOT image file) taken to Orbs network and use of the app is considered as agreement of the policy.\n\nTouch to focus, and press the blue camera button to take photos. For more help, click Online help from Settings.</string>
     <string name="intro_ok">OK (This message won\'t show again)</string>
 
     <string name="on">On</string> <!-- whether a setting is turned on, e.g., "Auto-level: On" -->
