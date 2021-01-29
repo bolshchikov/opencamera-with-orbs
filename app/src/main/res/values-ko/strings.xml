@@ -4,7 +4,7 @@
     <string name="app_name">오픈 카메라</string>
     <string name="action_settings">설정</string>
     <string name="action_popup">팝업 설정</string>
-    <string name="intro_text">터치해서 초점을 맞추고 파란색 카메라 버튼을 눌러서 사진을 찍습니다. 더 많은 도움이 필요하시면, 설정에서 온라인 도움말을 선택하세요. 오픈 카메라는 완전 무료입니다. 앱이 마음에 드시면 기부용 앱을 구매해보세요 (온라인 도움말 혹은 설정에서 링크를 선택).\n\n개인정보 정책: 위치 퍼미션은 지오태깅을 위해 필요합니다. 하지만 비활성화가 기본값입니다. 만약 활성화되면, 당신의 위치는 저장된 파일에 기록됩니다 (이것은 오직 지오태깅 용도로만 사용됩니다).</string>
+    <string name="intro_text">개인정보 정책: 본 데모앱에서는 촬영되는 사진들에 대해 다음 정보를 오브스(Orbs) 블록체인에 기록하여 이미지의 소유권을 등록하며 본 앱의 사용은 해당 정보의 사용에 동의하는 것으로 간주됩니다.\n\n* Android ID, 촬영일시, 촬영 이미지파일의 Hash값(이미지 파일은 업로드하지 않습니다)\n\n더 많은 도움이 필요하시면, 설정에서 도움말을 선택하세요.</string>
     <string name="intro_ok">확인 (이 메세지는 더이상 표시되지 않습니다)</string>
 
     <string name="on">켜짐</string> <!-- whether a setting is turned on, e.g., "Auto-stabilise: On" -->
@@ -194,6 +194,8 @@
     <string name="preference_donate_summary">앱이 마음에 드시면 기부를 고려해보세요. 기부용 앱을 구매하시면 됩니다 - 여기를 선택하시면 기부용 앱 관련 페이지가 열립니다. 감사합니다!</string>
     <string name="preference_use_camera2">Camera2 API 사용</string>
     <string name="preference_use_camera2_summary">안드로이드 5 버전의 Camera2 API - 부가 기능들을 지원하지만 아직 실험적입니다 (재시작됨)</string>
+    <string name="preference_about_orbs">Orbs에 대해서</string>
+    <string name="preference_about_orbs_summary">블록체인 정보</string>
     <string name="preference_about">오픈 카메라에 대해서</string>
     <string name="preference_about_summary">앱 및 디버그 정보</string>
     <string name="preference_reset">설정 초기화</string>
@@ -323,5 +325,7 @@
 
     <string name="preference_ui_placement_left">왼손잡이 사용자 인터페이스</string>
     <string name="preference_ui_placement_right">오른손잡이 사용자 인터페이스</string>
+
+    <string name="photo_hash_registred_successfully">이미지 소유정보가 성공적으로 등록되었습니다</string>
 
 </resources>
